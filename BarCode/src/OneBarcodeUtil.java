@@ -2,7 +2,9 @@ import java.awt.image.BufferedImage;
 import java.io.FileOutputStream;
 
 import org.jbarcode.JBarcode;
+import org.jbarcode.encode.EAN13Encoder;
 import org.jbarcode.encode.EAN8Encoder;
+import org.jbarcode.paint.EAN13TextPainter;
 import org.jbarcode.paint.EAN8TextPainter;
 import org.jbarcode.paint.WidthCodedPainter;
 import org.jbarcode.util.ImageUtil;
@@ -11,13 +13,13 @@ public class OneBarcodeUtil {
 
 	public static void main(String[] paramArrayOfString) {
 		try {
-			JBarcode localJBarcode = new JBarcode(EAN8Encoder.getInstance(),
+			JBarcode localJBarcode = new JBarcode(EAN13Encoder.getInstance(),
 					WidthCodedPainter.getInstance(),
-					EAN8TextPainter.getInstance());
-			String str = "3126456";
+					EAN13TextPainter.getInstance());
+			String str = "312645612345";
 			BufferedImage localBufferedImage = localJBarcode.createBarcode(str);
 
-			saveToJPEG(localBufferedImage, "EAN8.jpg");
+			saveToJPEG(localBufferedImage, "EAN13.jpg");
 		} catch (Exception localException) {
 			localException.printStackTrace();
 		}
